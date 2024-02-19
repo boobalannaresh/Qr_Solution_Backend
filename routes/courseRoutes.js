@@ -9,7 +9,7 @@ import {
     createCourses,
     deleteCoursesByID,
     updateCourseByID,
-    ActivateCourseByID
+    // ActivateCourseByID
 } from "../controllers/courseControllers.js";
 import jwt from "jsonwebtoken";
 
@@ -52,7 +52,7 @@ router.delete("/deletebyid/:id", auth, deleteCoursesByID);
 // Edit movie by ID
 router.put("/updatebyid/:id", updateCourseByID);
 
-router.put("/activatebyid/:id", ActivateCourseByID);
+// router.put("/activatebyid/:id", ActivateCourseByID);
 
 export default router;
 

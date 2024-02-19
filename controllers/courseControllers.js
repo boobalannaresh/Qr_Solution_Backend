@@ -99,24 +99,24 @@ export const updateCourseByID = async (req, res) => {
 };
 
 
-// Edit movie by ID
-export const ActivateCourseByID = async (req, res) => {
-  // Spliting data from req.bady to multiple varibles
+// // Edit movie by ID
+// export const ActivateCourseByID = async (req, res) => {
+//   // Spliting data from req.bady to multiple varibles
 
-  const { id } = req.params;
+//   const { id } = req.params;
 
-  const course = await Course.findOneAndUpdate(
-    { _id: new ObjectId(id) },
-    {
-      $push: {activate:id}
-    }
-  );
-  if (course) { 
-    res.status(201).json(course);
-  } else {
-    // if movie is not updated saying movie is not created
-    res.status(400);
-    throw new Error("failed to create");
-  }
-};
+//   const course = await Course.findOneAndUpdate(
+//     { _id: new ObjectId(id) },
+//     {
+//       $push: {activate:id}
+//     }
+//   );
+//   if (course) { 
+//     res.status(201).json(course);
+//   } else {
+//     // if movie is not updated saying movie is not created
+//     res.status(400);
+//     throw new Error("failed to create");
+//   }
+// };
  

@@ -1,5 +1,4 @@
-///// 4
-//// Next go to Controller. userController
+
 
 import mongoose from "mongoose";
 
@@ -10,7 +9,11 @@ const userSchema =  mongoose.Schema(
       username: { type: String, required: true },
       email: { type: String, required: true, unique: true },
       password: { type: String, required: true },
-      roleId:{ type: String, required: true }
+      roleId:{ type: String, required: true },
+      activate:{
+        type:Array,
+        default:[]
+      }
    
     },
     // Adding time stramps which used save datas timings entered in DB

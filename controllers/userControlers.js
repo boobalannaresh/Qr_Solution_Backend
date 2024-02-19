@@ -3,6 +3,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { ObjectId } from "mongodb";
 
 export const register = async (req, res) => {
     // Spliting data from req.bady to multiple varibles
@@ -48,5 +49,50 @@ export const login = async (req, res) => {
     }
     } else {
       res.status(400).send("Invalid email id ");
+    }
+  };
+
+  // Edit movie by ID
+export const ActivateCourseByID = async (req, res) => {
+    // Spliting data from req.bady to multiple varibles
+  
+    const { id } = req.params;
+
+    const activationCourse = req.body;
+
+  console.log( activationCourse)
+    const course = await User.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      {
+        $push: {activate: activationCourse}
+      },{new:true}
+    );
+    if (course) { 
+      res.status(201).json(course);
+    } else {
+      // if movie is not updated saying movie is not created
+      res.status(400).json("failed to create");
+      
+    }
+  };
+
+
+// Fectch User by ID
+export const getUsersByID = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const singleUser = await User.findOne({ _id: new ObjectId(id) });
+      res.status(200).json({ singleUser  });
+    } catch (error) {
+      return res.status(500).send({ error });
+    }
+  };
+
+  export const getAllUser = async (req, res) => {
+    try {
+      const allUser = await User.find({});
+      res.status(200).json({ allUser });
+    } catch (error) {
+      return res.status(500).send({ error });
     }
   };
